@@ -43,7 +43,7 @@ const runPrediction = async () => {
   formData.append("image", file);
 
   try {
-    const res = await fetch("https://pneumoscanbackendapurba.onrender.com", {
+    const res = await fetch("https://pneumoscanbackendapurba.onrender.com/predict", {
     method: "POST",
     body: formData,
     });
