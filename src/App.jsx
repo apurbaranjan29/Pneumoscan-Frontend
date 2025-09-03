@@ -43,10 +43,18 @@ const runPrediction = async () => {
   formData.append("image", file);
 
   try {
+    //production Code
     const res = await fetch("https://pneumoscanbackendapurba.onrender.com/predict", {
     method: "POST",
     body: formData,
     });
+    // Developingcode
+    
+    // const res = await fetch("http://127.0.0.1:10000/predict", {
+    //   method: "POST",
+    //   body: formData,
+    // });
+
 
 
     // <-- Add here, immediately after getting response
@@ -56,10 +64,11 @@ console.log(data.probability);
 console.log(data.result);
 setPrediction({
   top: data.result,
-  confidence: `${(data.probability * 100).toFixed(0)}%`, // overall confidence of the predicted class
-  pneumonia: data.pneumonia_probability.toFixed(0),
-  normal: data.normal_probability.toFixed(0),
+  confidence: `${(data.probability * 100).toFixed(0)}%`, 
+  pneumonia: (data.pneumonia_probability * 100).toFixed(0),
+  normal: (data.normal_probability * 100).toFixed(0),
 });
+
 
 
   } catch (err) {
