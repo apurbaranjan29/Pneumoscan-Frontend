@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root{
+  --glass: rgba(255,255,255,0.06);
+  --accent1: linear-gradient(135deg,#ff5f6d 0%, #ffc371 100%);
+  --accent2: linear-gradient(135deg,#7b8cff 0%, #a1ffce 100%);
+  --accent3: linear-gradient(135deg,#7ee8fa 0%, #80ff72 100%);
+}
+
+/* full-screen background gradient */
+body {
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(123,140,255,0.12), transparent 10%),
+              radial-gradient(1000px 500px at 90% 90%, rgba(255,95,109,0.08), transparent 10%),
+              linear-gradient(180deg,#060617 0%, #0b1020 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Floating blobs */
+.blob {
+  position:absolute;
+  filter: blur(40px);
+  opacity:0.9;
+  transform-origin:center;
+  mix-blend-mode:screen;
+  animation: float 8s ease-in-out infinite;
+}
+.blob.b1 { width:420px; height:420px; left: -6%; top: -8%; background: linear-gradient(45deg,#ff5f6d,#ffc371); animation-duration:10s;}
+.blob.b2 { width:340px; height:340px; right: -6%; bottom: -6%; background: linear-gradient(45deg,#7b8cff,#a1ffce); animation-duration:12s; animation-delay:1s;}
+.blob.b3 { width:260px; height:260px; left:20%; bottom:10%; background: linear-gradient(45deg,#7ee8fa,#80ff72); animation-duration:9s; animation-delay:0.5s;}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Glass card with 3D tilt */
+.p-card {
+  perspective: 1200px;
+}
+.p-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(.2,.9,.2,1);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px) saturate(130%);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  border-radius: 24px;
+}
+
+/* Active focused glow */
+.p-card-inner:focus-within {
+  box-shadow: 0 20px 50px rgba(123,140,255,0.14), 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* File drop area */
+.drop-area {
+  border: 1px dashed rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px;
+  text-align:center;
+  transition: all .18s ease;
+}
+.drop-area:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 10px 30px rgba(123,140,255,0.06);
+}
+
+/* nice primary button */
+.btn-primary {
+  background: linear-gradient(90deg,#ff5f6d,#ffc371);
+  padding: .6rem 1.1rem;
+  border-radius: 12px;
+  color: #081026;
+  font-weight: 700;
+  box-shadow: 0 8px 28px rgba(255,95,109,0.12);
+}
+
+/* small subtle label */
+.small-muted { color: rgba(255,255,255,0.7); font-size:0.9rem; }
